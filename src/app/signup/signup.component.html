@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row justify-content-center my-5">
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+                <h2 class="text-center m-2">LOGIN</h2>
+              <form [formGroup]="formData"> 
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label class="form-label">Email Id</label>
+                      <input type="email" class="form-control" formControlName="email" name="email" />
+                    </div>
+                  </div>
+    
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label class="form-label">Password</label>
+                      <input type="password" class="form-control" formControlName="pwd" name="pwd"  />
+                      <small class="text-danger" *ngIf=" pwd && pwd.invalid && pwd.touched">incorrect password</small>
+                    </div>
+                  </div>
+                  
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-outline-success my-3" (click)="postAll()">Sign-In</button>
+                  </div>
+    
+                  <div class="col-12 align-center">
+                    <a href="forgot" class="text-center">Forgot Password /</a>
+                    <a href="register" >Sign Up</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    
+    
+    
+</div>

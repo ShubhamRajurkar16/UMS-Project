@@ -1,0 +1,146 @@
+<div class="container">
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center m-2">Registration Form</h2>
+                        <form [formGroup]="RegistrationData">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control" formControlName="fname" name="fname" />
+                                        <span class="text-danger"
+                                            *ngIf="fname.errors?.['required'] && (fname.touched || fname.dirty) ">First
+                                            Name is required</span>
+                                        <span class="text-danger"
+                                            *ngIf="fname.errors?.['minLength'] && (fname.touched || fname.dirty) ">first
+                                            name is to short!</span>
+                                        <span class="text-danger"
+                                            *ngIf="fname.errors?.['pattern'] && (fname.touched || fname.dirty)">First
+                                            Start with Alphabet</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" formControlName="lname" name="lname" />
+                                        <span class="text-danger"
+                                            *ngIf="lname.errors?.['required'] && lname.touched ">Last Name is
+                                            required</span>
+                                        <span class="text-danger"
+                                            *ngIf="lname.errors?.['minlenght'] && lname.touched ">Last name is to
+                                            short!</span>
+                                        <span class="text-danger"
+                                            *ngIf="lname.errors?.['pattern'] && lname.touched ">Last Start with
+                                            Alphabet</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Mobile No</label>
+                                        <input type="number" class="form-control" formControlName="phno" name="phno" />
+                                        <span class="text-danger"
+                                            *ngIf="phno.errors?.['required'] && (phno.touched || phno.dirty)">Email is
+                                            required</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control"
+                                            (blur)="emailCheck($any($event.target).value)" formControlName="email"
+                                            name="email" />
+                                        <span class="text-danger"
+                                            *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">Email
+                                            is required</span>
+                                        <span class="text-danger"
+                                            *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">incorrect
+                                            Email address</span>
+                                        <span class="text-danger"
+                                            *ngIf="Email.errors?.['emailCheck'] && (Email.touched || Email.dirty)">this
+                                            Email address is already registered</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Dob</label>
+                                        <input type="date" class="form-control" formControlName="dob" name="dob" />
+                                        <span class="text-danger"
+                                            *ngIf="dob.errors?.['required'] && (dob.touched || dob.dirty)">Email is
+                                            required</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Country</label>
+                                        <select name="" formControlName="countryId" id="countryId" class="form-control"
+                                            (change)="state($any($event.target).value)">
+                                            <option value="defoult" *ngFor="let cont of country | keyvalue"
+                                                [value]="cont.key">
+                                                {{ cont.value }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="" class="form-label">State</label>
+                                        <select name="" formControlName="stateId" id="stateId" class="form-control"
+                                            (change)="city($any($event.target).value)">
+                                            <option *ngFor="let s of stateD | keyvalue" [value]="s.key">
+                                                {{ s.value }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <select name="cityId" formControlName="cityId" id="" class="form-control">
+                                            <option value="defoult" *ngFor="let c of citty | keyvalue" [value]="c.key">
+                                                {{ c.value }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="" class="form-label">Gender</label>
+                                        <div class="form-check">
+                                            <input type="radio" formControlName="gender" name="gender" id="malenn"
+                                                class="form-control" value="male" class="form-check-label" />
+                                            <label for="malenn">Male</label>&nbsp;
+                                            <input type="radio" name="gender" formControlName="gender"
+                                                class="form-control" id="femalenn" value="female"
+                                                class="form-check-label" />
+                                            <label for="femalenn">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-outline-success m-2" (click)="registerUser()">
+                                        Register
+                                    </button>
+                                    <button type="reset" class="btn btn-outline-danger">
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
