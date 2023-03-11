@@ -17,9 +17,9 @@
                                         <span class="text-danger"
                                             *ngIf="fname.errors?.['minLength'] && (fname.touched || fname.dirty) ">first
                                             name is to short!</span>
-                                        <span class="text-danger"
+                                        <!-- <span class="text-danger"
                                             *ngIf="fname.errors?.['pattern'] && (fname.touched || fname.dirty)">First
-                                            Start with Alphabet</span>
+                                            Start with Alphabet</span> -->
                                     </div>
                                 </div>
 
@@ -115,7 +115,7 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="" class="form-label">Gender</label>
+                                        <label class="form-label">Gender</label>
                                         <div class="form-check">
                                             <input type="radio" formControlName="gender" name="gender" id="malenn"
                                                 class="form-control" value="male" class="form-check-label" />

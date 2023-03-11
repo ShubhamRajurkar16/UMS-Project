@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../service/user.service';
-
+// Validators.pattern('[a-zA-Z].*')]
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,9 +15,9 @@ export class RegisterComponent {
   countryId :new FormControl() ,
   dob : new FormControl('',[Validators.required]),
   email:new FormControl('',[Validators.required,Validators.email]),
-  fname : new FormControl('',[Validators.required,Validators.minLength(2),Validators.pattern('[a-zA-Z].*')]),
+  fname : new FormControl('',[Validators.required,Validators.minLength(2)]),
   gender : new FormControl('',[Validators.required]),
-  lname : new FormControl('',[Validators.required,Validators.minLength(2),Validators.pattern('[a-zA-Z].*')]),
+  lname : new FormControl('',[Validators.required,Validators.minLength(2)]),
   phno : new FormControl('',[Validators.required]),
   stateId : new FormControl()
   }) 

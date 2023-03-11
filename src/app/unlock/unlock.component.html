@@ -18,7 +18,7 @@
                 <div class="form-group">
                     <label class="form-label">Password</label>
                     <input type="password" class="form-control" formControlName="tempPwd" name="tempPwd" >
-                    <span *ngIf="tempmpwd && tempmpwd.invalid && tempmpwd.touched">Incorrect Password</span>
+                    <span class="text-danger" *ngIf="tempmpwd && tempmpwd.invalid && tempmpwd.touched">Incorrect Password</span>
                 </div>
                 </div>
 
@@ -46,8 +46,4 @@
           </div>
         </div>
     </div>
-    
-    
-    
-    
 </div>

@@ -9,7 +9,7 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   postUser(body:any){
-     return this.http.post(`http://15.206.171.20:9090/login`,body,{responseType:'text'})
+    return this.http.post(`http://15.206.171.20:9090/login`,body,{responseType:'text'})
   }
 
   postRegister(body:any){
@@ -23,6 +23,7 @@ export class UserService {
   getState(countryId:number){
     return this.http.get(`http://15.206.171.20:9090/states/${countryId}`)
   }
+  
   getCity(stateId:number){
     return this.http.get(`http://15.206.171.20:9090/cities/${stateId}`)
   }
