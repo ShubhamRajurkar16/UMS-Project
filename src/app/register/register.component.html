@@ -79,7 +79,7 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">Country</label>
+                                        <label class="form-label">Country</label>
                                         <select name="" formControlName="countryId" id="countryId" class="form-control"
                                             (change)="state($any($event.target).value)">
                                             <option value="defoult" *ngFor="let cont of country | keyvalue"
@@ -104,7 +104,7 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>City</label>
+                                        <label class="form-label">City</label>
                                         <select name="cityId" formControlName="cityId" id="" class="form-control">
                                             <option value="defoult" *ngFor="let c of citty | keyvalue" [value]="c.key">
                                                 {{ c.value }}
