@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,21 +10,34 @@ import { UserService } from '../service/user.service';
 })
 export class SignupComponent {
 UserData:any;
-  constructor(private login:UserService)  {}
+  constructor(private login:UserService, private route:Router)  {}
 
-formData = new FormGroup({
-  email:new FormControl(''),
+loginForm = new FormGroup({
+  email:new FormControl('',[Validators.required]),
   pwd: new FormControl('',[Validators.required])
 })
 
+
+get email(){
+  return this.loginForm.get('email') as FormControl
+}
 get pwd(){
-return this.formData.get('pwd');
+return this.loginForm.get('pwd') as FormControl;
 }
 
 
-postAll(){
-this.login.postUser(this.formData.value).subscribe((res:any)=>console.log(res));
+userLogin(){
+this.login.loginUser(this.loginForm.value).subscribe((res:any)=>console.log(res));
 alert('login succesfull')
+this.route.navigate(['home'])
 }
+
+
+
+
+
+
   
 }
+
+

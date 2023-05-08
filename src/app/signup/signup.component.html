@@ -1,42 +1,48 @@
-<div class="container">
-    <div class="row justify-content-center my-5">
-        <div class="col-md-3">
-          <div class="card">
-            <div class="card-body">
-                <h2 class="text-center m-2">LOGIN</h2>
-              <form [formGroup]="formData"> 
-                <div class="row">
-                  <div class="col-12">
-                    <div class="form-group">
-                      <label class="form-label">Email Id</label>
-                      <input type="email" class="form-control" formControlName="email" name="email" />
+  <div class="container h-50">
+    <div class="row justify-content-center mt-5">
+      <div class="col-12 col-lg-4 col-xl-4">
+        <div class="card" style="border-radius: 15px">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <form [formGroup]="loginForm">
+                  <h1 class="text-center">LOGIN</h1>
+                  <div class="form-outline">
+                    <label class="form-label mt-2"> Email</label>
+                    <input type="email" class="form-control" formControlName="email" name="email" />
+                    <div *ngIf="
+                        !loginForm.controls['email'].valid &&
+                        loginForm.controls['email'].touched
+                      ">
+                      <span class="text-danger"> enter your email*</span>
                     </div>
                   </div>
-    
-                  <div class="col-12">
-                    <div class="form-group">
-                      <label class="form-label">Password</label>
-                      <input type="password" class="form-control" formControlName="pwd" name="pwd"  />
-                      <small class="text-danger" *ngIf=" pwd && pwd.invalid && pwd.touched">incorrect password</small>
+
+                  <div class="form-group">
+                    <label class="form-label mt-2">Password</label>
+                    <input type="password" class="form-control" formControlName="pwd" name="pwd" />
+                    <div *ngIf="
+                        !loginForm.controls['pwd'].valid &&
+                        loginForm.controls['pwd'].touched
+                      ">
+                      <span class="text-danger">enter your password*</span>
                     </div>
                   </div>
-                  
-                  <div class="col-12">
-                    <button type="submit" class="btn btn-outline-success my-3" (click)="postAll()">Sign-In</button>
+
+                  <button type="button" class="btn btn-success col-12 mt-3" (click)="userLogin()">
+                    Sign-In
+                  </button>
+
+                  <div class="text-center mt-3">
+                    <a [routerLink]="['/forgot']" class="my-2">
+                      Forget Password ?</a>
+                    <a [routerLink]="['/register']"> Sing-Up </a>
                   </div>
-    
-                  <div class="col-12 align-center">
-                    <a routerLink="forgot" class="text-center">Forgot Password /</a>
-                    <a routerLink="register" >Sign Up</a>
-                  </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
-    
-    
-    
-    
-</div>
+  </div>

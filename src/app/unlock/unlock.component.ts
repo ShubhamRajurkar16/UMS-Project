@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-unlock',
@@ -9,24 +10,30 @@ import { UserService } from '../service/user.service';
 })
 export class UnlockComponent {
 
+
+
+  constructor(private http:UserService,private route:Router){ }
+
+  unlockAccForm=new FormGroup({
+
+    email:new FormControl('',[Validators.required]),
+    tempPwd: new FormControl('',[Validators.required]),
+    newPwd: new FormControl('',[Validators.required]),
+    confirmPwd:new FormControl('',[Validators.required])
   
-unlockform=new FormGroup(
-  {
-    "confirmPwd":new FormControl('',[Validators.requiredTrue]),
-    "email":new FormControl('',[Validators.email]),
-    "newPwd": new FormControl('',[Validators.requiredTrue]),
-    "tempPwd":new FormControl('',[Validators.required])
-  }
-)
-
-  constructor(private http:UserService){ }
-
-  postUnlock(){
-    this.http.unlock(this.unlockform.value).subscribe((res)=>console.log(res));
-    alert('unlock account successfull')
-  }
+  })
 
   get tempmpwd(){
-    return this.unlockform.get('tempPwd')
+    return this.unlockAccForm.get('tempPwd')
   }
+
+  postUnlock(){
+    this.http.unlock(this.unlockAccForm.value).subscribe((res)=>console.log(res));
+    alert('unlock account successfull')
+    this.route.navigate(['home'])
+  }
+
+
 }
+
+

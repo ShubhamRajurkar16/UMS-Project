@@ -8,14 +8,13 @@
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
-                      <label class="form-label">Email Id</label>
-                      <input type="email" class="form-control" formControlName="email" name="email" />
-                 <!-- <small class="text-danger"  *ngIf="pswd.invalid && pswd.touched">plzz enter your valid email address</small> -->
+                      <label class="form-label"></label>
+                      <input type="email" class="form-control" formControlName="email" name="email" placeholder="Enter your Email "/>
                     </div>
                   </div>
     
                   <div class="col-12">
-                    <button type="submit" class="btn btn-outline-success my-3" (click)="forgetPass($any($event.target).value)">Submit</button>
+                    <button type="submit" class="btn btn-success col-12 my-4" (click)="forgetPass($any($event.target).value)">Submit</button>
                   </div>
     
                 </div>
@@ -29,3 +28,4 @@
     
     
 </div>
+

@@ -1,5 +1,11 @@
+.card{
+    margin-top: 70px;
+}
 a{
     text-decoration: none;
-    margin:0 2px 15px;
+    padding: 10px;
 }
-
+.card-body{
+    border: 1px solid grey;
+    border-radius: 15px;
+}

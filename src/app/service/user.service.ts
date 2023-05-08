@@ -8,7 +8,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  postUser(body:any){
+  loginUser(body:any){
     return this.http.post(`http://15.206.171.20:9090/login`,body,{responseType:'text'})
   }
 

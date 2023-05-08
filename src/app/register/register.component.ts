@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../service/user.service';
-// Validators.pattern('[a-zA-Z].*')]
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -42,34 +42,41 @@ export class RegisterComponent {
     return this.RegistrationData.get('phno') as FormControl;
   }
 
-  constructor(private register:UserService){
+  constructor(private register:UserService, private route:Router,){
     this.countries()
+
   }
 userData:any;
 country:any;
-stateD:any;
-citty:any;
+state:any;
+city:any;
 
 
   registerUser(){
     this.register.postRegister(this.RegistrationData.value).subscribe((res)=>console.log(res));
     alert('registration succesfull')
+    this.route.navigate(['home'])
   }
 
   countries(){
-    this.register.getCountry().subscribe((res)=>this.country=res)
+    this.register.getCountry().subscribe((res)=>this.country = res)
   }
 
-  state(countryId:number){
-    this.register.getState(countryId).subscribe((res)=>this.stateD=res);
+  stateData(countryId:number){
+    this.register.getState(countryId).subscribe((res)=>this.state = res);
   }
 
-  city(cityId:number){
-    this.register.getCity(cityId).subscribe((res)=>this.citty=res)
+  citydata(cityId:number){
+    this.register.getCity(cityId).subscribe((res)=>this.city = res)
   }
 
   emailCheck(email:any){
     this.register.email(email).subscribe((res)=>console.log(res))
-  }
+  }   
+    
+
+
+  
+    }
  
-}
+
